@@ -1,14 +1,14 @@
 # sapflux_calc_larix
 
-Code associated with sapflux data and analysis from data collected in the Y4 watershed _Larix cajanderii_ in northeastern Siberia. _sapflow_calc.R_ is a R script for converting raw data on the change in temperature from sapflux probes. _OpenBUGS_model_code.txt_ is a model script for a Bayesian model of canopy stomatal conductance in OpenBUGS. 
+Code associated with sapflux data and analysis from data collected in the Y4 watershed _Larix cajanderii_ in northeastern Siberia. _sapflow_calc.R_ is a R script for converting raw data of the change in temperature from sapflux probes. _OpenBUGS_model_code.txt_ is a model script for a Bayesian model of canopy stomatal conductance in OpenBUGS. 
 
 ### sapflow_calc.R
-Script in R for reading in raw sapflux data and calculating canopy transpiration and stomatal conductance. This script also includes initial data flags and a check to look at radial differences in sapflow.
+Script in R for reading in raw sapflux data and calculating canopy transpiration and canopy stomatal conductance. This script also includes initial data flags and a check to look at radial differences in sapflow.
 
 
 
 ### OpenBUGS_model_code
-OpenBUGS model script for a Bayesian model that combines two phenomonological models for canopy stomatal conductance. A sub model for a stochastic estimation of antecedent precipitation is included. 
+OpenBUGS model script for a Bayesian model that combines two phenomonological models describing canopy stomatal conductance. A sub model for a stochastic estimation of the influence of antecedent precipitation on stomatal behavior is included. 
 
 ###### Citations from sapflux calculation script
 
