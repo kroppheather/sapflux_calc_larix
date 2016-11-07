@@ -1,7 +1,3 @@
-###########################################
-############To ask:########################
-#1. leaf area?
-#2. g/hr, use other units? 
 
 ###############Notes########################
 
@@ -63,7 +59,7 @@ Nobs<-6474
 #probes switched Augst 25th 2015 voltage turned down from 3 to 1.8V 
 #Trees 8,9,10,11,12,13,14,16 switched from 3cm to 1cm
 #doy 237
-#appears to have changed at obs 5902
+#changed at obs 5902
 ###################################################
 #########read in sensor info#######################
 ###################################################
@@ -210,13 +206,17 @@ abline(v=2971)
 #need to establish relationship between
 #sapwood thickness and DBH
 #from other data taken at the site 
-{
+
 datSWT<-read.csv("SWT_forR.csv")
 #check linear fit
-plot(datSWT$DBH,datSWT$SWT,ylim=c(0,3),xlim=c(0,35))
+par(mai=c(1,1,1,1))
+plot(datSWT$DBH,datSWT$SWT,ylim=c(0,3),xlim=c(0,35), pch=19, xlab="Diameter Breast Height (DBH, cm)",
+		ylab="Sapwood thickness (cm)", yaxt="n", cex.lab=1.5, box="n", xaxs="i", yaxs="i", axes=FALSE)
+axis(1, seq(0,35, by=5), cex.axis=1.25)
+axis(2, seq(0,3, by=.5), cex.axis=1.25, las=2)
 fitS<-lm(datSWT$SWT~datSWT$DBH)
 summary(fitS)
-
+abline(fitS)
 #check normality
 qqnorm(fitS$residuals)
 
@@ -231,7 +231,7 @@ qqnorm(fitS$residuals)
 #Multiple R-squared:  0.4114,    Adjusted R-squared:  0.3858 
 #F-statistic: 16.07 on 1 and 23 DF,  p-value: 0.00055
 
-}
+
 #note this will not be accurate for shrubs!!!
 depth.es<-(diam*-.031)+1.59
 
@@ -298,7 +298,7 @@ for(j in 1:Nsensor){
 F.l[,j]<-V.l[,j]*sap[j]*3600
 }
 #################################
-###############?????????????????
+###############
 #set up data flag for spikes
 Fl.cor<-matrix(rep(0,Nobs*Nsensor),ncol=Nsensor)
 for(j in 1:Nsensor){
@@ -312,30 +312,30 @@ time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
 time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
 wi<-windows(15)
 for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),dTs[,(i)],type="l",lwd=2,xaxt="n",ylab="dT",ylim=c(0,50),
-xlab=paste(i))
-points(seq(1,Nobs),DTall3[,(i)],type="l",lwd=2,col="red",lty=2)
-text(5000,420,paste(name[i]), cex=2)
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs),dTs[,(i)],type="l",lwd=2,xaxt="n",ylab="dT",ylim=c(0,50),
+	xlab=paste(i))
+	points(seq(1,Nobs),DTall3[,(i)],type="l",lwd=2,col="red",lty=2)
+	text(5000,420,paste(name[i]), cex=2)
+	axis(1,time.pl,time.lab)
+	#add year divisions
+	abline(v=953, lty=2, lwd=2, col="grey60")
+	abline(v=2971, lty=2, lwd=2, col="grey60")
 }
 
 sub.S<-c(7,10,14)
 sub.N<-c(8,16,15)
 for(i in 1:3){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),Fl.cor[,sub.S[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,500),
-xlab=paste(i),col="red")
-points(seq(1,Nobs),Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey50")
-points(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey20")
-#text(5000,420,paste(name[i]), cex=2)
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs),Fl.cor[,sub.S[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,500),
+	xlab=paste(i),col="red")
+	points(seq(1,Nobs),Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey50")
+	points(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey20")
+	#text(5000,420,paste(name[i]), cex=2)
+	axis(1,time.pl,time.lab)
+	#add year divisions
+	abline(v=953, lty=2, lwd=2, col="grey60")
+	abline(v=2971, lty=2, lwd=2, col="grey60")
 }
 ave.d<-rep(0,3)
 sub.S<-c(7,10,14)
@@ -438,7 +438,6 @@ leaf.area<-lf.wgt*143
 
 
 ##############################################################
-###########check this before finishing
 
 # so E.l should be g cm-2 hr
 #to convert to g m-2 s 
@@ -584,7 +583,7 @@ Gs.mmol.lcor[,i]<-unit.conv(Gs.lcor[,i],Msub$Temp,Psub)*1000
 }
 
 
-#plot results to see if realistic
+#plot results
 {
 Nobs2<-6336
 plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
