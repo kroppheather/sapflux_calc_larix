@@ -17,6 +17,8 @@
 #2015 total = 3504
 
 #total =6474
+
+###set wd
 setwd("c:\\Users\\hkropp\\Google Drive\\sap_flux\\R")
 
 ##########################################
@@ -242,7 +244,7 @@ depth.es<-(diam*-.031)+1.59
 totdepth<-c(0,0,1,1,1,0,rep(3,11))
 
 
-#according to Lu et al to account for portion of probe not in sapwood
+#according to Clearwater et al to account for portion of probe not in sapwood
 #DT.SW=(DT-b*DTmax)/a where b =1-a and a is the proportion of probe
 #with sapwood 
 
@@ -307,7 +309,7 @@ for(j in 1:Nsensor){
 }
 
 #######plotting
-{
+
 time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
 time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
 wi<-windows(15)
@@ -421,7 +423,7 @@ hist(ave.diffall[1:123],breaks=10)
 t.test(ave.diffall[1:123],mu=0)
 
 
-}
+
 
 
 #estimate leaf area from biomass using an allometric equation from Alexander et al 2012
@@ -460,15 +462,15 @@ time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
 time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
 wi<-windows(15)
 for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
-xlab=paste(i))
-text(5000,420,paste(name[i]), cex=2)
-axis(1,time.pl,time.lab)
-points(seq(1,Nobs),(E.l.lcor[,(i)]/18)*1000,type="l",lwd=2,col="grey70")
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
+	xlab=paste(i))
+	text(5000,420,paste(name[i]), cex=2)
+	axis(1,time.pl,time.lab)
+	points(seq(1,Nobs),(E.l.lcor[,(i)]/18)*1000,type="l",lwd=2,col="grey70")
+	#add year divisions
+	abline(v=953, lty=2, lwd=2, col="grey60")
+	abline(v=2971, lty=2, lwd=2, col="grey60")
 }
 
 #write data frame for analysis later
@@ -578,27 +580,27 @@ unit.conv<-function(gs,T,P){gs*.446*(273/(T+273))*(P/101.3)}
 Gs.mmol<-matrix(rep(0,14*6336),ncol=14)
 Gs.mmol.lcor<-matrix(rep(0,14*6336),ncol=14)
 for(i in 1:14){
-Gs.mmol[,i]<-unit.conv(Gs[,i],Msub$Temp,Psub)*1000
-Gs.mmol.lcor[,i]<-unit.conv(Gs.lcor[,i],Msub$Temp,Psub)*1000
+	Gs.mmol[,i]<-unit.conv(Gs[,i],Msub$Temp,Psub)*1000
+	Gs.mmol.lcor[,i]<-unit.conv(Gs.lcor[,i],Msub$Temp,Psub)*1000
 }
 
 
 #plot results
-{
+
 Nobs2<-6336
 plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
 time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
 time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
 wi<-windows(15)
 for(i in 1:14){
-wi[i]<-windows(15)
-plot(seq(1,Nobs2),Gs.mmol[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (mmol m-2 s-1)",ylim=c(0,400),
-xlab=paste(plant[i]))
-points(seq(1,Nobs2),Gs.mmol.lcor[,(i)],type="l",lwd=2,col="gray70")
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs2),Gs.mmol[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (mmol m-2 s-1)",ylim=c(0,400),
+	xlab=paste(plant[i]))
+	points(seq(1,Nobs2),Gs.mmol.lcor[,(i)],type="l",lwd=2,col="gray70")
+	axis(1,time.pl,time.lab)
+	#add year divisions
+	abline(v=953, lty=2, lwd=2, col="grey60")
+	abline(v=2971, lty=2, lwd=2, col="grey60")
 }
 
 Nobs2<-6336
@@ -607,31 +609,31 @@ time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
 time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
 wi<-windows(15)
 for(i in 1:14){
-wi[i]<-windows(15)
-plot(seq(1,Nobs2),Gs[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (cm s-1)",ylim=c(0,1),
-xlab=paste(plant[i]))
-points(seq(1,Nobs2),Gs.lcor[,(i)],type="l",lwd=2,col="gray70")
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs2),Gs[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (cm s-1)",ylim=c(0,1),
+	xlab=paste(plant[i]))
+	points(seq(1,Nobs2),Gs.lcor[,(i)],type="l",lwd=2,col="gray70")
+	axis(1,time.pl,time.lab)
+	#add year divisions
+	abline(v=953, lty=2, lwd=2, col="grey60")
+	abline(v=2971, lty=2, lwd=2, col="grey60")
 }
-}
+
 ################################################################
 ################################################################
 #make plots to just look at some daily timescales
-{
+
 wi<-windows(15)
 
 
 xlabhr<-seq(200,230)
 xlabt<-seq(1,48*31,by=48)
 for(i in 1:14){
-wi[i]<-windows(15)
-plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i])),
-Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i],type="l",ylim=c(0,700),lwd=2,
-xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
-axis(1,xlabt,xlabhr )
+	wi[i]<-windows(15)
+	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i])),
+	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i],type="l",ylim=c(0,700),lwd=2,
+	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
+	axis(1,xlabt,xlabhr )
 }
 
 #day 237 was the sensor change, try plots with 220-250
@@ -639,27 +641,27 @@ axis(1,xlabt,xlabhr )
 xlabhr<-seq(220,250)
 xlabt<-seq(1,48*31,by=48)
 for(i in 1:14){
-wi[i]<-windows(15)
-plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
-Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1000),lwd=2,
-xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
-axis(1,xlabt,xlabhr )
-abline(v=17*48,col="grey50",lwd=2,lty=2)
+	wi[i]<-windows(15)
+	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
+	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1000),lwd=2,
+	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
+	axis(1,xlabt,xlabhr )
+	abline(v=17*48,col="grey50",lwd=2,lty=2)
 }
 
 xlabhr<-seq(220,250)
 xlabt<-seq(1,48*31,by=48)
 for(i in 1:14){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
-xlab=paste(i))
-plot(seq(1,length(E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
-E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1),lwd=2,
-xaxt="n",ylab="T g m-2 s-1", xlab=paste(plant[i]))
-axis(1,xlabt,xlabhr )
-abline(v=17*48,col="grey50",lwd=2,lty=2)
+	wi[i]<-windows(15)
+	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
+	xlab=paste(i))
+	plot(seq(1,length(E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
+	E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1),lwd=2,
+	xaxt="n",ylab="T g m-2 s-1", xlab=paste(plant[i]))
+	axis(1,xlabt,xlabhr )
+	abline(v=17*48,col="grey50",lwd=2,lty=2)
 }
-}
+
 
 ###############################################################
 ################################################################
