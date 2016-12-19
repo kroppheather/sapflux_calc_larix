@@ -1,5 +1,7 @@
+#set appropriate working directory
 setwd("c:\\Users\\hkropp\\Google Drive\\sap_flux\\R\\fixed_met")
 
+#read in the raw data file
 datmet<-read.csv("met_w_gap.csv")
 
 names(datmet)
