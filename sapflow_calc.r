@@ -127,80 +127,80 @@ for(j in 1:Nsensor){
 F[,j]<-V[,j]*sap[j]*3600
 }
 
-
-#########################################################################
-#########################################################################
-###Plots of all years without data flag
-#doy labels
-time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
-time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
-
-#set up plotting labels
-{
-#doy labels
-time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
-time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
-
-#plot max dT
-wi<-windows(15)
-for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),DTmax[,i],type="l",lwd=2,xaxt="n",ylab="dT max",ylim=c(0,20),
-xlab=paste(i))
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953)
-abline(v=2971)
-}
-
-#plot dT calc
-wi<-windows(15)
-for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),Dcalc[,i],type="l",lwd=2,xaxt="n",ylab="dT calc",ylim=c(0,1.5),
-xlab=paste(i))
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953)
-abline(v=2971)
-}
-#plot V
-wi<-windows(15)
-for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),dTs[,i],type="l",lwd=2,xaxt="n",ylab="dT uncorrected",ylim=c(0,10),
-xlab=paste(i))
-points(seq(1,Nobs),DTmax[,i],type="l",lwd=2,lty=2,col="grey50")
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953)
-abline(v=2971)
-}
-
-#plot V
-wi<-windows(15)
-for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),V[,i],type="l",lwd=2,xaxt="n",ylab="dT uncorrected",ylim=c(0,.1),
-xlab=paste(i))
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953)
-abline(v=2971)
-}
-
-#plot each 3cm sensor to check for any issues
-wi<-windows(15)
-for(i in 1:17){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),F[,i],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,450),
-xlab=paste(i))
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953)
-abline(v=2971)
-}
-}
+# EXPLORARTORY PLOTS COMMENTED OUT - WILL WORK ONLY IN WINDOWS #
+# #########################################################################
+# #########################################################################
+# ###Plots of all years without data flag
+# #doy labels
+# time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
+# time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
+# 
+# #set up plotting labels
+# {
+# #doy labels
+# time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
+# time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
+# 
+# #plot max dT
+# wi<-windows(15)
+# for(i in 1:17){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),DTmax[,i],type="l",lwd=2,xaxt="n",ylab="dT max",ylim=c(0,20),
+# xlab=paste(i))
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953)
+# abline(v=2971)
+# }
+# 
+# #plot dT calc
+# wi<-windows(15)
+# for(i in 1:17){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),Dcalc[,i],type="l",lwd=2,xaxt="n",ylab="dT calc",ylim=c(0,1.5),
+# xlab=paste(i))
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953)
+# abline(v=2971)
+# }
+# #plot V
+# wi<-windows(15)
+# for(i in 1:17){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),dTs[,i],type="l",lwd=2,xaxt="n",ylab="dT uncorrected",ylim=c(0,10),
+# xlab=paste(i))
+# points(seq(1,Nobs),DTmax[,i],type="l",lwd=2,lty=2,col="grey50")
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953)
+# abline(v=2971)
+# }
+# 
+# #plot V
+# wi<-windows(15)
+# for(i in 1:17){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),V[,i],type="l",lwd=2,xaxt="n",ylab="dT uncorrected",ylim=c(0,.1),
+# xlab=paste(i))
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953)
+# abline(v=2971)
+# }
+# 
+# #plot each 3cm sensor to check for any issues
+# wi<-windows(15)
+# for(i in 1:17){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),F[,i],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,450),
+# xlab=paste(i))
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953)
+# abline(v=2971)
+# }
+# }
 
 ######################################################
 #######################################################
@@ -309,50 +309,50 @@ for(j in 1:Nsensor){
 }
 
 #######plotting
-
-time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
-time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
-wi<-windows(15)
-for(i in 1:17){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs),dTs[,(i)],type="l",lwd=2,xaxt="n",ylab="dT",ylim=c(0,50),
-	xlab=paste(i))
-	points(seq(1,Nobs),DTall3[,(i)],type="l",lwd=2,col="red",lty=2)
-	text(5000,420,paste(name[i]), cex=2)
-	axis(1,time.pl,time.lab)
-	#add year divisions
-	abline(v=953, lty=2, lwd=2, col="grey60")
-	abline(v=2971, lty=2, lwd=2, col="grey60")
-}
-
-sub.S<-c(7,10,14)
-sub.N<-c(8,16,15)
-for(i in 1:3){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs),Fl.cor[,sub.S[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,500),
-	xlab=paste(i),col="red")
-	points(seq(1,Nobs),Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey50")
-	points(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey20")
-	#text(5000,420,paste(name[i]), cex=2)
-	axis(1,time.pl,time.lab)
-	#add year divisions
-	abline(v=953, lty=2, lwd=2, col="grey60")
-	abline(v=2971, lty=2, lwd=2, col="grey60")
-}
-ave.d<-rep(0,3)
-sub.S<-c(7,10,14)
-sub.N<-c(8,16,15)
-for(i in 1:3){
-wi[i]<-windows(15)
-plot(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(-100,300),
-xlab=paste(i),col="grey20")
-#text(5000,420,paste(name[i]), cex=2)
-axis(1,time.pl,time.lab)
-#add year divisions
-abline(v=953, lty=2, lwd=2, col="grey60")
-abline(v=2971, lty=2, lwd=2, col="grey60")
-ave.d[i]<-mean(na.omit(Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]]))
-}
+# 
+# time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
+# time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
+# wi<-windows(15)
+# for(i in 1:17){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs),dTs[,(i)],type="l",lwd=2,xaxt="n",ylab="dT",ylim=c(0,50),
+# 	xlab=paste(i))
+# 	points(seq(1,Nobs),DTall3[,(i)],type="l",lwd=2,col="red",lty=2)
+# 	text(5000,420,paste(name[i]), cex=2)
+# 	axis(1,time.pl,time.lab)
+# 	#add year divisions
+# 	abline(v=953, lty=2, lwd=2, col="grey60")
+# 	abline(v=2971, lty=2, lwd=2, col="grey60")
+# }
+# 
+# sub.S<-c(7,10,14)
+# sub.N<-c(8,16,15)
+# for(i in 1:3){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs),Fl.cor[,sub.S[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(0,500),
+# 	xlab=paste(i),col="red")
+# 	points(seq(1,Nobs),Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey50")
+# 	points(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,col="grey20")
+# 	#text(5000,420,paste(name[i]), cex=2)
+# 	axis(1,time.pl,time.lab)
+# 	#add year divisions
+# 	abline(v=953, lty=2, lwd=2, col="grey60")
+# 	abline(v=2971, lty=2, lwd=2, col="grey60")
+# }
+# ave.d<-rep(0,3)
+# sub.S<-c(7,10,14)
+# sub.N<-c(8,16,15)
+# for(i in 1:3){
+# wi[i]<-windows(15)
+# plot(seq(1,Nobs),Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]],type="l",lwd=2,xaxt="n",ylab="Sapflow (g/hr)",ylim=c(-100,300),
+# xlab=paste(i),col="grey20")
+# #text(5000,420,paste(name[i]), cex=2)
+# axis(1,time.pl,time.lab)
+# #add year divisions
+# abline(v=953, lty=2, lwd=2, col="grey60")
+# abline(v=2971, lty=2, lwd=2, col="grey60")
+# ave.d[i]<-mean(na.omit(Fl.cor[,sub.S[i]]-Fl.cor[,sub.N[i]]))
+# }
 #check relationship between N and S on all measurements
 fit.d7<-lm(Fl.cor[,7]~Fl.cor[,8])
 summary(fit.d7)
@@ -458,20 +458,20 @@ for(j in 1:Nsensor){
 ######################################################################
 #####################################################################
 ###### more plotting
-time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
-time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
-wi<-windows(15)
-for(i in 1:17){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
-	xlab=paste(i))
-	text(5000,420,paste(name[i]), cex=2)
-	axis(1,time.pl,time.lab)
-	points(seq(1,Nobs),(E.l.lcor[,(i)]/18)*1000,type="l",lwd=2,col="grey70")
-	#add year divisions
-	abline(v=953, lty=2, lwd=2, col="grey60")
-	abline(v=2971, lty=2, lwd=2, col="grey60")
-}
+# time.pl<-c(seq(16,928,by=48),seq(978,2946,by=48),seq(3030,6438,by=48))
+# time.lab<-c(seq(198,217),seq(185,226), seq(178,249))
+# wi<-windows(15)
+# for(i in 1:17){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
+# 	xlab=paste(i))
+# 	text(5000,420,paste(name[i]), cex=2)
+# 	axis(1,time.pl,time.lab)
+# 	points(seq(1,Nobs),(E.l.lcor[,(i)]/18)*1000,type="l",lwd=2,col="grey70")
+# 	#add year divisions
+# 	abline(v=953, lty=2, lwd=2, col="grey60")
+# 	abline(v=2971, lty=2, lwd=2, col="grey60")
+# }
 
 #write data frame for analysis later
 
@@ -587,81 +587,81 @@ for(i in 1:14){
 
 #plot results
 
-Nobs2<-6336
-plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
-time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
-time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
-wi<-windows(15)
-for(i in 1:14){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs2),Gs.mmol[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (mmol m-2 s-1)",ylim=c(0,400),
-	xlab=paste(plant[i]))
-	points(seq(1,Nobs2),Gs.mmol.lcor[,(i)],type="l",lwd=2,col="gray70")
-	axis(1,time.pl,time.lab)
-	#add year divisions
-	abline(v=953, lty=2, lwd=2, col="grey60")
-	abline(v=2971, lty=2, lwd=2, col="grey60")
-}
-
-Nobs2<-6336
-plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
-time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
-time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
-wi<-windows(15)
-for(i in 1:14){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs2),Gs[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (cm s-1)",ylim=c(0,1),
-	xlab=paste(plant[i]))
-	points(seq(1,Nobs2),Gs.lcor[,(i)],type="l",lwd=2,col="gray70")
-	axis(1,time.pl,time.lab)
-	#add year divisions
-	abline(v=953, lty=2, lwd=2, col="grey60")
-	abline(v=2971, lty=2, lwd=2, col="grey60")
-}
-
-################################################################
-################################################################
-#make plots to just look at some daily timescales
-
-wi<-windows(15)
-
-
-xlabhr<-seq(200,230)
-xlabt<-seq(1,48*31,by=48)
-for(i in 1:14){
-	wi[i]<-windows(15)
-	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i])),
-	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i],type="l",ylim=c(0,700),lwd=2,
-	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
-	axis(1,xlabt,xlabhr )
-}
-
-#day 237 was the sensor change, try plots with 220-250
-
-xlabhr<-seq(220,250)
-xlabt<-seq(1,48*31,by=48)
-for(i in 1:14){
-	wi[i]<-windows(15)
-	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
-	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1000),lwd=2,
-	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
-	axis(1,xlabt,xlabhr )
-	abline(v=17*48,col="grey50",lwd=2,lty=2)
-}
-
-xlabhr<-seq(220,250)
-xlabt<-seq(1,48*31,by=48)
-for(i in 1:14){
-	wi[i]<-windows(15)
-	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
-	xlab=paste(i))
-	plot(seq(1,length(E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
-	E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1),lwd=2,
-	xaxt="n",ylab="T g m-2 s-1", xlab=paste(plant[i]))
-	axis(1,xlabt,xlabhr )
-	abline(v=17*48,col="grey50",lwd=2,lty=2)
-}
-
+# Nobs2<-6336
+# plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
+# time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
+# time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
+# wi<-windows(15)
+# for(i in 1:14){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs2),Gs.mmol[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (mmol m-2 s-1)",ylim=c(0,400),
+# 	xlab=paste(plant[i]))
+# 	points(seq(1,Nobs2),Gs.mmol.lcor[,(i)],type="l",lwd=2,col="gray70")
+# 	axis(1,time.pl,time.lab)
+# 	#add year divisions
+# 	abline(v=953, lty=2, lwd=2, col="grey60")
+# 	abline(v=2971, lty=2, lwd=2, col="grey60")
+# }
+# 
+# Nobs2<-6336
+# plant<-c(3,4,5,7,7,9,10,11,12,13,14,14,10,17)
+# time.pl<-c(seq(1,866,by=48),seq(913,2833,by=48),seq(2881,6289,by=48))
+# time.lab<-c(seq(198,216),seq(185,225), seq(177,248))
+# wi<-windows(15)
+# for(i in 1:14){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs2),Gs[,(i)],type="l",lwd=2,xaxt="n",ylab="Gs (cm s-1)",ylim=c(0,1),
+# 	xlab=paste(plant[i]))
+# 	points(seq(1,Nobs2),Gs.lcor[,(i)],type="l",lwd=2,col="gray70")
+# 	axis(1,time.pl,time.lab)
+# 	#add year divisions
+# 	abline(v=953, lty=2, lwd=2, col="grey60")
+# 	abline(v=2971, lty=2, lwd=2, col="grey60")
+# }
+# 
+# ################################################################
+# ################################################################
+# #make plots to just look at some daily timescales
+# 
+# wi<-windows(15)
+# 
+# 
+# xlabhr<-seq(200,230)
+# xlabt<-seq(1,48*31,by=48)
+# for(i in 1:14){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i])),
+# 	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=200&datE$DOY<=230,i],type="l",ylim=c(0,700),lwd=2,
+# 	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
+# 	axis(1,xlabt,xlabhr )
+# }
+# 
+# #day 237 was the sensor change, try plots with 220-250
+# 
+# xlabhr<-seq(220,250)
+# xlabt<-seq(1,48*31,by=48)
+# for(i in 1:14){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,length(Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
+# 	Gs.mmol.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1000),lwd=2,
+# 	xaxt="n",ylab="Gs mmol m-2 s-1", xlab=paste(plant[i]))
+# 	axis(1,xlabt,xlabhr )
+# 	abline(v=17*48,col="grey50",lwd=2,lty=2)
+# }
+# 
+# xlabhr<-seq(220,250)
+# xlabt<-seq(1,48*31,by=48)
+# for(i in 1:14){
+# 	wi[i]<-windows(15)
+# 	plot(seq(1,Nobs),(E.l[,(i)]/18)*1000,type="l",lwd=2,xaxt="n",ylab="Sapflow (mmol m-2 s-1)",ylim=c(0,2),
+# 	xlab=paste(i))
+# 	plot(seq(1,length(E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i])),
+# 	E.l.lcor[datE$Year==2015&datE$DOY>=220&datE$DOY<=250,i],type="l",ylim=c(0,1),lwd=2,
+# 	xaxt="n",ylab="T g m-2 s-1", xlab=paste(plant[i]))
+# 	axis(1,xlabt,xlabhr )
+# 	abline(v=17*48,col="grey50",lwd=2,lty=2)
+# }
+# 
 
 ###############################################################
 ################################################################
