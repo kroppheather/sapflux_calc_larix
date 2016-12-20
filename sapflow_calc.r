@@ -127,7 +127,7 @@ for(j in 1:Nsensor){
 F[,j]<-V[,j]*sap[j]*3600
 }
 
-# EXPLORARTORY PLOTS COMMENTED OUT - WILL WORK ONLY IN WINDOWS #
+# EXPLORARTORY PLOTS COMMENTED OUT - WILL WORK ONLY ON WINDOWS OS #
 # #########################################################################
 # #########################################################################
 # ###Plots of all years without data flag
@@ -294,11 +294,23 @@ V.l<-matrix(rep(0,Nobs*Nsensor),ncol=Nsensor)
 for(j in 1:Nsensor){
 	V.l[,j]<-ifelse(K[,j]>=0,0.0119*(K[,j]^1.231),NA)
 }
+#make data frame and write output file for reference
+V.l.dat <- data.frame(V.l,datS$Year,datS$DOY,datS$Time)
+V.l.dat<-rbind(V.l.dat[16:927,],V.l.dat[978:2945,],V.l.dat[2982:6437,])
+colnames(V.l.dat)<-c(name,"Year","DOY","Time")
+write.table(V.l.dat,"Js_cm_sec_out_eqfix.csv",sep=",",row.names=FALSE)
+
 #calculate F in g/hr
 F.l<-matrix(rep(0,Nobs*Nsensor),ncol=Nsensor)
 for(j in 1:Nsensor){
 F.l[,j]<-V.l[,j]*sap[j]*3600
 }
+
+#make data frame and write output file for reference
+F.l.dat <- data.frame(F.l,datS$Year,datS$DOY,datS$Time)
+F.l.dat<-rbind(F.l.dat[16:927,],F.l.dat[978:2945,],F.l.dat[2982:6437,])
+colnames(F.l.dat)<-c(name,"Year","DOY","Time")
+write.table(F.l.dat,"Js_g_hr_out_eqfix.csv",sep=",",row.names=FALSE)
 #################################
 ###############
 #set up data flag for spikes
@@ -438,7 +450,9 @@ lf.wgt<-leaf.bio(diam,a.bio,b.bio)
 #cm^2 per tree
 leaf.area<-lf.wgt*143
 
-
+plant.dat <- data.frame(size,sp,name,plant,aspect,diam,sap,leaf.area)
+names(plant.dat) <- c('sensor.length.cm','genus','name','plant id','sensor.location','diameter.cm','sapwood.area.cm2','leaf.area.cm2')
+#write.table(plant.dat,"plant_information.csv",row.names=FALSE,sep=",")
 ##############################################################
 
 # so E.l should be g cm-2 hr
@@ -474,15 +488,15 @@ for(j in 1:Nsensor){
 # }
 
 #write data frame for analysis later
-
+#this is intermediate code 
 datEt<-data.frame(E.l[,3:5],E.l[,7:17],datS$Year,datS$DOY,datS$Time)
-colnames(datEt)<-c(seq(3,5),seq(7,17),"Year","DOY","Time")
+colnames(datEt)<-c(name[c(3:5,7:17)],"Year","DOY","Time")
 #exclude day at the start and end of each year since there appear to be some
 #irregularities in the data as it gets set up the first day
 datE<-rbind(datEt[16:927,],datEt[978:2945,],datEt[2982:6437,])
 
 datEt.lcor<-data.frame(E.l.lcor[,3:5],E.l.lcor[,7:17],datS$Year,datS$DOY,datS$Time)
-colnames(datEt.lcor)<-c(seq(3,5),seq(7,17),"Year","DOY","Time")
+colnames(datEt.lcor)<-c(name[c(3:5,7:17)],"Year","DOY","Time")
 #exclude day at the start and end of each year since there appear to be some
 #irregularities in the data as it gets set up the first day
 datE.lcor<-rbind(datEt.lcor[16:927,],datEt.lcor[978:2945,],datEt.lcor[2982:6437,])
@@ -671,7 +685,7 @@ for(i in 1:14){
 
 gs.dat<-data.frame(Gs.mmol.lcor,Year=datE.lcor$Year,DOY=datE.lcor$DOY,Time=datE.lcor$Time )
 
-T.dat<-data.frame((datE.lcor/18)*1000,Year=datE.lcor$Year,DOY=datE.lcor$DOY,Time=datE.lcor$Time)
+T.dat<-data.frame((datE.lcor[,1:14]/18)*1000,Year=datE.lcor$Year,DOY=datE.lcor$DOY,Time=datE.lcor$Time)
 
 write.table(gs.dat,"Gs_mmol_out_eqfix.csv",sep=",",row.names=FALSE)
 write.table(T.dat,"T_mmol_out_eqfix.csv",sep=",",row.names=FALSE)
