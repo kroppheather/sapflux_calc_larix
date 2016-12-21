@@ -30,3 +30,6 @@ OpenBUGS model script for a Bayesian model that combines two phenomonological mo
 **Oren, R.**, _et al._ _(1999)_, Survey and synthesis of intra- and interspecific variation in stomatal sensitivity to vapour pressure deficit, 1515–1526.
 
 **Ogle, K.**, _et al._ _(2015)_, Quantifying ecological memory in plant and ecosystem processes, Ecol. Lett., 18(3), 221–235, doi:10.1111/ele.12399.
+
+
+[![DOI](https://zenodo.org/badge/73092485.svg)](https://zenodo.org/badge/latestdoi/73092485)
